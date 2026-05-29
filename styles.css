@@ -288,6 +288,20 @@ nav {
   color: var(--blush);
 }
 
+.pull-quote blockquote .attr .review-link {
+  color: #fff4e9;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  font-weight: 500;
+}
+
+.pull-quote blockquote .attr .review-link:hover {
+  color: #ffffff;
+}
+
 .about {
   display: grid;
   grid-template-columns: 1fr 1fr;
