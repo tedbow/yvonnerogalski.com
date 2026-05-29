@@ -302,6 +302,24 @@ nav {
   color: #ffffff;
 }
 
+.pull-quote blockquote .more-reviews {
+  margin-top: 1rem;
+}
+
+.pull-quote blockquote .more-reviews .more-reviews-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff4e9;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.pull-quote blockquote .more-reviews .more-reviews-link:hover {
+  color: #ffffff;
+}
+
 .about {
   display: grid;
   grid-template-columns: 1fr;
