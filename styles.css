@@ -140,6 +140,28 @@ nav {
   align-items: center;
 }
 
+.retailer-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.retailer-heading {
+  width: 100%;
+  margin: 0.2rem 0 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid-brown);
+}
+
+.retailer-btn {
+  padding: 0.8rem 1.3rem;
+  font-size: 0.72rem;
+}
+
 .btn-primary {
   background: var(--rust);
   color: white;
@@ -572,6 +594,7 @@ footer {
   .nav-links { gap: 1.5rem; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 8rem 2rem 3rem; }
+  .retailer-btn { flex: 1 1 calc(50% - 0.4rem); text-align: center; }
   .hero-right { padding: 2rem; }
   .pull-quote { padding: 4rem 2rem; }
   .about { grid-template-columns: 1fr; }
