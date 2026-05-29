@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hysterectomy: A Memoir</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6EF;
+      --warm-white: #FDF9F4;
+      --rust: #C0533A;
+      --deep-rust: #8B3A27;
+      --blush: #E8B4A0;
+      --soft-blush: #F5DDD4;
+      --charcoal: #2C2420;
+      --mid-brown: #6B4F42;
+      --light-brown: #9E7B6E;
+      --gold: #C8922A;
+      --sage: #7A8C6E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--charcoal);
+      font-family: 'Lora', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(250, 246, 239, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(160, 110, 90, 0.15);
+    }
+
+    .nav-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--mid-brown);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--mid-brown);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rust); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-style: italic;
+      color: var(--light-brown);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--mid-brown);
+      max-width: 420px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-tagline em {
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--rust);
+      color: white;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--deep-rust);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1.5px solid var(--rust);
+      color: var(--rust);
+      padding: 0.9rem 2.2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: var(--soft-blush);
+    }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 5rem 6rem 2rem;
+      position: relative;
+    }
+
+    /* Book cover */
+    .book-wrap {
+      position: relative;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-12px) rotate(-1deg); }
+    }
+
+    .book-cover-img {
+      width: 400px;
+      height: auto;
+      display: block;
+      border-radius: 2px 6px 6px 2px;
+      filter: drop-shadow(8px 16px 40px rgba(44,36,32,0.35));
+    }
+
+    /* Hero bg decoration */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .blob-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(232,180,160,0.25) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+
+    .blob-2 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(192,83,58,0.1) 0%, transparent 70%);
+      bottom: 0; left: 100px;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      background: var(--charcoal);
+      color: var(--cream);
+      padding: 5rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pull-quote::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 20rem;
+      color: rgba(255,255,255,0.04);
+      position: absolute;
+      top: -3rem;
+      left: 2rem;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .pull-quote blockquote {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .pull-quote blockquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .pull-quote blockquote .attr {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blush);
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .about-text {
+      padding: 7rem 5rem 7rem 6rem;
+      background: var(--warm-white);
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      height: 1px;
+      width: 40px;
+      background: var(--blush);
+      display: inline-block;
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--mid-brown);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p em {
+      color: var(--rust);
+      font-style: italic;
+    }
+
+    .about-visual {
+      background: var(--soft-blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(192,83,58,0.04) 20px,
+        rgba(192,83,58,0.04) 21px
+      );
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-top: 3px solid var(--rust);
+      box-shadow: 0 4px 20px rgba(44,36,32,0.08);
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--rust);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-family: 'Lora', serif;
+      font-size: 0.85rem;
+      color: var(--mid-brown);
+      line-height: 1.4;
+    }
+
+    /* ── EMAIL SECTION ── */
+    .email-section {
+      background: linear-gradient(135deg, var(--rust) 0%, var(--deep-rust) 100%);
+      padding: 7rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .email-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .email-section .section-label {
+      color: var(--blush);
+      justify-content: center;
+    }
+
+    .email-section .section-label::after {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .email-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: white;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .email-section p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .email-form input[type="email"] {
+      flex: 1;
+      padding: 1rem 1.4rem;
+      border: none;
+      background: white;
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      outline: none;
+    }
+
+    .email-form input[type="email"]::placeholder {
+      color: var(--light-brown);
+    }
+
+    .email-form button {
+      background: var(--charcoal);
+      color: white;
+      border: none;
+      padding: 1rem 1.8rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .email-form button:hover {
+      background: #1a1210;
+    }
+
+    .email-fine-print {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 1rem;
+      position: relative;
+      letter-spacing: 0.05em;
+    }
+
+    #email-success {
+      display: none;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    /* ── CHAPTERS TEASER ── */
+    .chapters {
+      padding: 7rem 6rem;
+      background: var(--cream);
+    }
+
+    .chapters-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+
+    .chapters-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      color: var(--charcoal);
+    }
+
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(160,110,90,0.15);
+    }
+
+    .chapter-card {
+      background: var(--warm-white);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+      cursor: default;
+    }
+
+    .chapter-card:hover {
+      background: var(--soft-blush);
+    }
+
+    .chapter-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 0.8rem;
+    }
+
+    .chapter-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--charcoal);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .chapter-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--light-brown);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+      padding: 3rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 8rem 2rem 3rem; }
+      .hero-right { padding: 2rem; }
+      .pull-quote { padding: 4rem 2rem; }
+      .about { grid-template-columns: 1fr; }
+      .about-text { padding: 4rem 2rem; }
+      .chapters { padding: 4rem 2rem; }
+      .chapters-grid { grid-template-columns: 1fr; }
+      .email-section { padding: 5rem 2rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-title">Hysterectomy: A Memoir</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#chapters">Chapters</a></li>
+      <li><a href="#notify">Get Updates</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+
+    <div class="hero-left reveal">
+      <p class="hero-eyebrow">A memoir</p>
+      <h1 class="hero-title">Hysterectomy</h1>
+      <p class="hero-subtitle">A Memoir</p>
+      <p class="hero-tagline">
+        A darkly funny, gut-wrenchingly honest account of <em>years of pain</em>, one radical surgery, and the terrifying, absurd, sometimes hilarious business of almost not surviving it.
+      </p>
+      <div class="cta-group">
+        <a href="#notify" class="btn-primary">Get Notified</a>
+        <a href="#about" class="btn-secondary">Read More</a>
+      </div>
+    </div>
+
+    <div class="hero-right reveal">
+      <div class="book-wrap">
+        <img src="book-cover.jpg" alt="Hysterectomy: A Memoir by Yvonne Rogalski" class="book-cover-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section class="pull-quote">
+    <blockquote class="reveal">
+      <p>"I spent years being told the pain was in my head. Turns out, it was in my uterus. This is the story of getting it out — and almost not coming back."</p>
+      <span class="attr">— from the introduction</span>
+    </blockquote>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-text reveal">
+      <p class="section-label">About the book</p>
+      <h2>Funny.<br/>Heartbreaking.<br/>True.</h2>
+      <p>
+        Living with endometriosis means spending years fighting for someone — anyone — to believe you. It means <em>becoming fluent in a pain language</em> that has no good translation, and learning to perform wellness you don't feel.
+      </p>
+      <p>
+        This memoir traces that journey: the dismissals, the diagnoses, the dark humor that kept things survivable. And then the surgery. And then the part where everything went very, very wrong.
+      </p>
+      <p>
+        It's a book about bodies and bureaucracy, grief and gallows humor, and what it means to rebuild a life on the other side of almost losing it.
+      </p>
+    </div>
+
+    <div class="about-visual reveal">
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years living with undiagnosed endometriosis</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1 in 10</div>
+          <div class="stat-label">Women affected by endometriosis worldwide</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7 yrs</div>
+          <div class="stat-label">Average delay to diagnosis</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Times told "it's just bad cramps"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTERS TEASER -->
+  <section class="chapters" id="chapters">
+    <div class="chapters-header reveal">
+      <div>
+        <p class="section-label">Inside the book</p>
+        <h2>What you'll find</h2>
+      </div>
+    </div>
+    <div class="chapters-grid reveal">
+      <div class="chapter-card">
+        <p class="chapter-num">Part I</p>
+        <h3 class="chapter-title">The Years Before</h3>
+        <p class="chapter-desc">The pain that was always "probably normal." The doctors who shrugged. The Google rabbit holes at 2am.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-num">Part II</p>
+        <h3 class="chapter-title">The Diagnosis</h3>
+        <p class="chapter-desc">Getting a name for the thing that was ruining your life feels like a gift — until you find out what the options are.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-num">Part III</p>
+        <h3 class="chapter-title">The Surgery</h3>
+        <p class="chapter-desc">What they tell you beforehand. What they don't. And the part where things went sideways in ways no one had a pamphlet for.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-num">Part IV</p>
+        <h3 class="chapter-title">Almost</h3>
+        <p class="chapter-desc">The ICU. The fear. The strange clarity that arrives when survival is no longer a given.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-num">Part V</p>
+        <h3 class="chapter-title">After</h3>
+        <p class="chapter-desc">Grief for the body you had. Gratitude for the one you're in. Learning to live in the wreckage and the light.</p>
+      </div>
+      <div class="chapter-card">
+        <p class="chapter-num">Throughout</p>
+        <h3 class="chapter-title">The Humor</h3>
+        <p class="chapter-desc">Because sometimes the only way through is to laugh at the absolutely unhinged things that happen when you're fighting your own body.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL COLLECTION -->
+  <section class="email-section" id="notify">
+    <p class="section-label">Stay in the loop</p>
+    <h2>Be the first to know.</h2>
+    <p>Publication updates, launch news, and the occasional dispatch from the other side of a very eventful recovery.</p>
+    <form class="email-form" onsubmit="handleSubmit(event)">
+      <input type="email" id="email-input" placeholder="your@email.com" required />
+      <button type="submit">Notify Me</button>
+    </form>
+    <p id="email-success">You're on the list. Thank you — truly. 🙏</p>
+    <p class="email-fine-print">No spam. Unsubscribe anytime. Just real updates.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-title">Hysterectomy: A Memoir</p>
+    <p class="footer-copy">© 2026 Yvonne Rogalski · All rights reserved</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Email form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      // In production, send `email` to your backend / mailing list service
+      document.querySelector('.email-form').style.display = 'none';
+      document.querySelector('.email-fine-print').style.display = 'none';
+      document.getElementById('email-success').style.display = 'block';
+      console.log('Email collected:', email);
+    }
+  </script>
+
+</body>
+</html>
