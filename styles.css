@@ -682,6 +682,36 @@ nav {
   color: var(--light-brown);
 }
 
+.author-section {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 5rem 6rem;
+  background: var(--warm-white);
+}
+
+.author-image-wrap {
+  justify-self: center;
+}
+
+.author-image {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(44,36,32,0.18);
+}
+
+.author-content p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--mid-brown);
+  margin: 0;
+  max-width: 700px;
+}
+
 footer {
   background: var(--charcoal);
   color: rgba(255,255,255,0.5);
@@ -728,5 +758,7 @@ footer {
   .chapters { padding: 4rem 2rem; }
   .chapters-grid { grid-template-columns: 1fr; }
   .email-section { padding: 5rem 2rem; }
+  .author-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 2rem; }
+  .author-content { text-align: left; }
   footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2.5rem 2rem; }
 }
