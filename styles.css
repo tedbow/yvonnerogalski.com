@@ -749,8 +749,15 @@ footer {
   nav { padding: 1rem 1.5rem; }
   .nav-links { gap: 1.5rem; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 8rem 2rem 3rem; }
+  .hero-left { padding: 8rem 2rem 3rem; min-width: 0; }
+  .hero-tagline { max-width: 100%; overflow-wrap: anywhere; }
+  .cta-group { width: 100%; }
+  .retailer-buttons { width: 100%; max-width: 100%; }
   .retailer-btn { flex: 1 1 calc(50% - 0.4rem); text-align: center; }
+  .btn-primary,
+  .btn-secondary { max-width: 100%; }
+  .book-wrap { width: min(100%, 340px); }
+  .book-cover-img { width: 100%; max-width: 100%; }
   .hero-right { padding: 2rem; }
   .pull-quote { padding: 4rem 2rem; }
   .about { grid-template-columns: 1fr; }
@@ -761,4 +768,10 @@ footer {
   .author-section { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 2rem; }
   .author-content { text-align: left; }
   footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2.5rem 2rem; }
+}
+
+@media (max-width: 520px) {
+  .retailer-btn {
+    flex: 1 1 100%;
+  }
 }
