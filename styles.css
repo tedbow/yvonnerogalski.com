@@ -424,6 +424,43 @@ nav {
   line-height: 1.4;
 }
 
+.review-cta {
+  padding: 5rem 6rem;
+  background: var(--warm-white);
+  text-align: center;
+}
+
+.review-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  color: var(--charcoal);
+  max-width: 640px;
+  margin: 0 auto 1rem;
+}
+
+.review-cta > p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--mid-brown);
+  max-width: 560px;
+  margin: 0 auto 2rem;
+}
+
+.review-cta .section-label {
+  justify-content: center;
+}
+
+.review-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .review-cta { padding: 4rem 2rem; }
+}
+
 .email-section {
   background: linear-gradient(135deg, var(--rust) 0%, var(--deep-rust) 100%);
   padding: 7rem 6rem;
@@ -456,6 +493,44 @@ nav {
 .email-section iframe {
   display: block;
   width: 100%;
+}
+
+.email-section .instagram-row {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 1.4rem;
+}
+
+.email-section .instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid rgba(255, 244, 233, 0.55);
+  border-radius: 999px;
+  background: rgba(44, 36, 32, 0.2);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.16);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff4e9;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.email-section .instagram-link .instagram-icon {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+  filter: brightness(0) invert(1);
+}
+
+.email-section .instagram-link:hover {
+  background: rgba(44, 36, 32, 0.38);
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .email-section .section-label {
