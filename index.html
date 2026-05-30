@@ -12,7 +12,12 @@
   <!-- NAV -->
   <nav>
     <span class="nav-title">Hysterectomy: A Memoir</span>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <ul class="nav-links" id="primary-nav">
       <li><a href="#about">About</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#spread-word">Spread the Word!</a></li>
@@ -120,6 +125,31 @@
   </footer>
 
   <script>
+    const nav = document.querySelector('nav');
+    const navToggle = document.querySelector('.nav-toggle');
+    const primaryNav = document.getElementById('primary-nav');
+
+    if (nav && navToggle && primaryNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      primaryNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) {
+          nav.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {

@@ -77,6 +77,28 @@ nav {
 
 .nav-links a:hover { color: var(--rust); }
 
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(160, 110, 90, 0.25);
+  border-radius: 6px;
+  width: 38px;
+  height: 34px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-toggle-line {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--mid-brown);
+}
+
 .hero {
   min-height: 100vh;
   display: grid;
@@ -747,7 +769,23 @@ footer {
 
 @media (max-width: 900px) {
   nav { padding: 1rem 1.5rem; }
-  .nav-links { gap: 1.5rem; }
+  .nav-toggle { display: inline-flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 1rem;
+    right: 1rem;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: rgba(253, 249, 244, 0.98);
+    border: 1px solid rgba(160, 110, 90, 0.18);
+    border-radius: 10px;
+    padding: 0.6rem;
+    box-shadow: 0 10px 28px rgba(44,36,32,0.14);
+  }
+  nav.nav-open .nav-links { display: flex; }
+  .nav-links a { display: block; padding: 0.6rem 0.65rem; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-left { padding: 8rem 2rem 3rem; min-width: 0; }
   .hero-tagline { max-width: 100%; overflow-wrap: anywhere; }
