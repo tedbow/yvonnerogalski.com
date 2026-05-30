@@ -112,7 +112,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6rem 4rem 6rem 6rem;
+  padding: 4rem 4rem 6rem 6rem;
   position: relative;
 }
 
@@ -226,7 +226,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 5rem 6rem 2rem;
+  padding: 4rem 5rem 6rem 2rem;
   position: relative;
 }
 
@@ -787,7 +787,7 @@ footer {
   nav.nav-open .nav-links { display: flex; }
   .nav-links a { display: block; padding: 0.6rem 0.65rem; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 8rem 2rem 3rem; min-width: 0; }
+  .hero-left { padding: 3rem 2rem 3rem; min-width: 0; }
   .hero-tagline { max-width: 100%; overflow-wrap: anywhere; }
   .cta-group { width: 100%; }
   .retailer-buttons { width: 100%; max-width: 100%; }
